@@ -8,19 +8,15 @@
 앱처럼 쓰고, **서버·DB 없이 브라우저 localStorage에만 저장**한다. 여행 중 해외 데이터가 불안정할 수 있어
 오프라인에서도 열리는 게 핵심(서비스워커).
 
-사용자는 중학교 교사이고 개발 경험 없이 바이브코딩으로 진행 중. 코드를 설명하기보다 고치고 검증하고
-배포까지 끝내는 것이 작업 패턴.
+원본: https://github.com/georanisam/fukuoka-baby 를 포크한 저장소. 원본에는 push하지 않는다.
 
 ## 위치·배포
 
-- **작업(빌드·git) 폴더**: `C:\Users\user\Desktop\hackthon\fukuoka-baby` — H: 드라이브(구글 드라이브 동기화)는
-  느려서 git 작업은 반드시 C:에서 한다. H: 드라이브의 `바이브코딩\fukuoka-baby` 폴더는
-  사본이다. 미러 명령:
-  `robocopy "C:\Users\user\Desktop\hackthon\fukuoka-baby" "<H: 사본 폴더>" /MIR /XD .git .vercel /XF .env.local`
-- **GitHub**: https://github.com/georanisam/fukuoka-baby (공개), `main` 브랜치.
-- **Vercel**: 프로젝트 `fukuoka-baby` (개인 계정). 배포 흐름: git commit → `git push` → Vercel 자동 배포.
+- **작업(빌드·git) 폴더**: `~/Projects/fukuoka-baby` (맥).
+- **GitHub**: https://github.com/Min04131027/fukuoka-baby (공개), `main` 브랜치.
+- **Vercel**: 프로젝트 `minjin-fukuoka` (개인 계정). 배포 흐름: git commit → `git push` → Vercel 자동 배포.
   CLI 직접 배포(`vercel --prod`)는 하지 않는다.
-- git 커밋 아이덴티티는 repo-local `georanisam <georanisam@users.noreply.github.com>`.
+- git 커밋 아이덴티티는 repo-local `Min04131027 <Min04131027@users.noreply.github.com>`.
 - **도메인(주소)을 바꾸면 사용자 폰의 저장 데이터가 새로 시작된다**(localStorage는 주소별). 프로젝트/도메인 이름 변경 금지.
 
 ## 구조 (빌드 없는 정적 사이트)
@@ -55,9 +51,9 @@
    "크게 보여주기" 오버레이는 택시·직원에게 화면을 보여주는 용도.
 6. **iOS 저장 주의**: 홈 화면 앱과 Safari는 저장 공간이 따로다. 홈 화면 아이콘을 삭제하면 데이터도 삭제된다.
 
-## 현재 상태 (2026-09-25)
+## 현재 상태 (2026-10-01)
 
-기능 완료·배포(https://fukuoka-baby.vercel.app). 배포 주소에서 서비스워커 등록·캐시 6개 파일까지 확인함.
+원본에서 포크. 배포 주소: https://minjin-fukuoka.vercel.app (Vercel Output Directory = `public`, 빌드 명령 없음).
 **아직 실기기(아이폰) 검증 전**: 비행기 모드로 열기, 공유시트 백업 저장, 홈 화면 아이콘 표시.
 
 ## 다음 후보 (선택)
