@@ -317,7 +317,7 @@
       <div class="card" id="exp-list-card"><div id="exp-list"></div></div>
     </div>
 
-    <div class="pane" id="pane-resto">
+    <div class="pane" id="pane-resto" hidden style="display:none !important">
       <div class="section-title">대체 식당 리스트</div>
       <p class="map-note">원래 가려던 곳이 웨이팅이 길거나 문을 닫았을 때 바로 대신 갈 수 있는 곳들이에요.</p>
       <div class="card">
@@ -420,7 +420,6 @@
   <div class="tabbar">
     <button class="tabbtn active" data-tab="pack"><span class="ic">🧳</span>준비물</button>
     <button class="tabbtn" data-tab="plan"><span class="ic">🗺️</span>일정</button>
-    <button class="tabbtn" data-tab="resto"><span class="ic">🍜</span>대체식당</button>
     <button class="tabbtn" data-tab="shop"><span class="ic">🛍️</span>쇼핑</button>
     <button class="tabbtn" data-tab="jp"><span class="ic">🗣️</span>일본어</button>
     <button class="tabbtn" data-tab="info"><span class="ic">🎪</span>공연·기타</button>
@@ -1237,7 +1236,7 @@ function setBkMsg(text, ok) {
 function refreshBackupStatus() {
   const items = packing.reduce((s, g) => s + g.items.length, 0);
   const days = Object.values(itinerary).reduce((s, d) => s + d.items.length, 0);
-  let line = '지금 데이터: 준비물 ' + items + '개 · 일정 ' + days + '개 · 식당 ' + restos.length + '곳 · 쇼핑 ' + shopping.length + '개';
+  let line = '지금 데이터: 준비물 ' + items + '개 · 일정 ' + days + '개 · 쇼핑 ' + shopping.length + '개';
   return window.storage.get('meta-last-backup').then(r => {
     const t = r ? fmtDate(JSON.parse(r.value)) : '';
     line += '\n마지막 백업: ' + (t || '아직 없음');
@@ -1362,7 +1361,7 @@ function applyBackupText(text) {
   try { data = parseBackup(text); } catch (e) { setBkMsg(e.message, false); return; }
   const items = data.packing.reduce((s, g) => s + g.items.length, 0);
   const ok = confirm('지금 폰의 데이터가 백업 내용으로 바뀌어요.\n\n' +
-    '백업에 든 내용: 준비물 ' + items + '개 · 식당 ' + data.restos.length + '곳 · 쇼핑 ' + data.shopping.length + '개\n\n복원할까요?');
+    '백업에 든 내용: 준비물 ' + items + '개 · 쇼핑 ' + data.shopping.length + '개\n\n복원할까요?');
   if (!ok) return;
   packing = data.packing;
   itinerary = data.itinerary;
