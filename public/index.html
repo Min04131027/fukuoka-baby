@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#20304D">
+<meta name="theme-color" content="#1F1F1F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,8 +20,8 @@
   html, body { margin: 0; padding: 0; height: 100%; }
   body {
     font-family: 'Noto Sans KR', sans-serif;
-    background: #FAF6EF;
-    color: #2C3B57;
+    background: #F7F7F5;
+    color: #3A3A3A;
   }
   .app {
     max-width: 460px;
@@ -30,185 +30,236 @@
     height: 100dvh;
     display: flex;
     flex-direction: column;
-    background: #FAF6EF;
+    background: #F7F7F5;
     position: relative;
   }
   .topbar {
-    background: #20304D;
-    color: #FAF6EF;
+    background: #1F1F1F;
+    color: #F7F7F5;
     padding: calc(18px + env(safe-area-inset-top)) 20px 16px;
     flex: 0 0 auto;
   }
   .topbar h1 { font-family: 'Baloo 2', sans-serif; font-size: 20px; margin: 0 0 2px; }
-  .topbar p { margin: 0; font-size: 12.5px; color: #C9D3E4; }
+  .topbar p { margin: 0; font-size: 12.5px; color: #CFCFCF; }
   .backup-btn {
     position: absolute; top: calc(14px + env(safe-area-inset-top)); right: 16px;
-    border: 1.5px dashed #E2703A; background: transparent; color: #FAF6EF; border-radius: 999px;
+    border: 1.5px dashed #D9453B; background: transparent; color: #F7F7F5; border-radius: 999px;
     padding: 6px 12px; font-size: 12px; font-weight: 700; font-family: 'Noto Sans KR', sans-serif; cursor: pointer;
   }
   .content { flex: 1 1 auto; overflow-y: auto; padding: 16px 16px 90px; -webkit-overflow-scrolling: touch; }
-  .tabbar { position: sticky; bottom: 0; display: flex; background: #FFFFFF; border-top: 1px solid #E7E0D3; flex: 0 0 auto; padding-bottom: env(safe-area-inset-bottom); }
+  .tabbar { position: sticky; bottom: 0; display: flex; background: #FFFFFF; border-top: 1px solid #E6E6E4; flex: 0 0 auto; padding-bottom: env(safe-area-inset-bottom); }
   .tabbtn {
     flex: 1; min-width: 0; border: none; background: none; padding: 8px 1px 10px; font-family: 'Noto Sans KR', sans-serif;
-    font-size: 10px; color: #9A9184; display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; white-space: nowrap;
+    font-size: 10px; color: #8E8E8E; display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; white-space: nowrap;
   }
   .tabbtn .ic { font-size: 17px; }
-  .tabbtn.active { color: #E2703A; font-weight: 700; }
+  .tabbtn.active { color: #D9453B; font-weight: 700; }
+  /* info (기타·공연시간) */
+  .info-acc { background:#FFFFFF; border:1px solid #E8E8E6; border-radius:14px; margin-bottom:10px; overflow:hidden; }
+  .info-acc summary { list-style:none; cursor:pointer; padding:15px 16px; display:flex; align-items:center; gap:10px; }
+  .info-acc summary::-webkit-details-marker { display:none; }
+  .info-acc .g-ic { font-size:18px; width:22px; text-align:center; }
+  .info-acc .g-t { font-size:15px; font-weight:700; color:#1F1F1F; }
+  .info-acc .g-n { margin-left:auto; font-size:12px; color:#A8A8A8; }
+  .info-acc .g-arw { width:8px; height:8px; border-right:1.5px solid #A8A8A8; border-bottom:1.5px solid #A8A8A8; transform:rotate(-45deg); transition:transform .2s; margin-left:4px; }
+  .info-acc[open] .g-arw { transform:rotate(45deg); }
+  .info-body { padding:0 16px 4px; }
+  .info-item { padding:13px 0 14px; border-top:1px solid #F0F0EE; }
+  .info-item .ih { display:flex; align-items:baseline; gap:8px; }
+  .info-item .it { flex:1; min-width:0; font-size:14px; font-weight:700; color:#1F1F1F; }
+  .info-item .day { flex:0 0 auto; font-size:12px; color:#A8A8A8; }
+  .info-item .lines { margin-top:6px; font-size:13px; color:#5E5E5E; line-height:1.65; }
+  .info-item .lines div { padding-left:10px; text-indent:-10px; }
+  .info-item .lines div::before { content:'· '; color:#C6C6C6; }
+  .info-link { border:none; background:none; color:#8E8E8E; font-size:12px; padding:2px 0 2px 8px; cursor:pointer; font-family:'Noto Sans KR',sans-serif; flex:0 0 auto; }
+  .info-link.accent { color:#D9453B; font-weight:700; }
+  .info-foot { display:flex; justify-content:space-between; padding:10px 0 12px; border-top:1px solid #F0F0EE; }
+  .info-bottom { display:flex; justify-content:space-between; padding:4px 2px 12px; }
+  .info-form label { display:block; font-size:12px; color:#8E8E8E; margin:12px 0 4px; }
+  .info-form input, .info-form textarea { width:100%; box-sizing:border-box; }
+  .info-form textarea { min-height:120px; resize:vertical; }
+  .info-form .btns { display:flex; gap:8px; margin-top:16px; }
+  .info-form .btns .addbtn { flex:1; }
+  .info-form .del { flex:0 0 auto; border:none; background:none; color:#B5352D; font-size:13px; padding:10px 6px; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
   .pane { display: none; }
   .pane.active { display: block; }
 
-  .section-title { font-family: 'Baloo 2', sans-serif; font-size: 16px; color: #20304D; margin: 18px 0 8px; display:flex; align-items:center; justify-content: space-between; }
+  .section-title { font-family: 'Baloo 2', sans-serif; font-size: 16px; color: #1F1F1F; margin: 18px 0 8px; display:flex; align-items:center; justify-content: space-between; }
   .section-title:first-child { margin-top: 2px; }
-  .card { background: #FFFFFF; border: 1px solid #ECE5D6; border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+  .card { background: #FFFFFF; border: 1px solid #E8E8E6; border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
 
   .edit-toggle {
-    border: 1.5px solid #20304D; background: #FFF; color: #20304D; border-radius: 999px;
+    border: 1.5px solid #1F1F1F; background: #FFF; color: #1F1F1F; border-radius: 999px;
     padding: 4px 12px; font-size: 12px; font-weight: 700; cursor: pointer; font-family:'Noto Sans KR',sans-serif;
   }
-  .edit-toggle.on { background: #20304D; color: #FAF6EF; }
+  .edit-toggle.on { background: #1F1F1F; color: #F7F7F5; }
 
   /* packing */
-  .check-row { display: flex; align-items: center; gap: 10px; padding: 9px 2px; border-bottom: 1px solid #F1EBDD; font-size: 14.5px; }
+  .check-row { display: flex; align-items: center; gap: 10px; padding: 9px 2px; border-bottom: 1px solid #F0F0EE; font-size: 14.5px; }
   .check-row:last-child { border-bottom: none; }
-  .check-row input[type=checkbox] { width: 19px; height: 19px; accent-color: #E2703A; flex: 0 0 auto; }
-  .check-row span.done { text-decoration: line-through; color: #B4AA9A; }
+  .check-row input[type=checkbox] { width: 19px; height: 19px; accent-color: #D9453B; flex: 0 0 auto; }
+  .check-row span.done { text-decoration: line-through; color: #ABABAB; }
   .check-row span.item-text { flex: 1; }
-  .row-del { border: none; background: none; color: #C7BFAE; font-size: 18px; cursor: pointer; padding: 6px 6px; flex: 0 0 auto; }
-  .progress-wrap { background: #EFE7D6; border-radius: 999px; height: 8px; overflow: hidden; margin: 6px 0 2px; }
-  .progress-bar { height: 100%; background: #E2703A; border-radius: 999px; transition: width .25s ease; }
-  .progress-label { font-size: 12px; color: #8B8272; display: flex; justify-content: space-between; }
+  .row-del { border: none; background: none; color: #C4C4C4; font-size: 18px; cursor: pointer; padding: 6px 6px; flex: 0 0 auto; }
+  .progress-wrap { background: #EDEDEB; border-radius: 999px; height: 8px; overflow: hidden; margin: 6px 0 2px; }
+  .progress-bar { height: 100%; background: #D9453B; border-radius: 999px; transition: width .25s ease; }
+  .progress-label { font-size: 12px; color: #808080; display: flex; justify-content: space-between; }
   .add-row { display: flex; gap: 6px; margin-top: 8px; }
   .add-row input { flex: 1; }
   .add-row button, .addbtn-sm {
-    background: #E2703A; color: #FFF; border: none; border-radius: 9px; padding: 8px 12px;
+    background: #D9453B; color: #FFF; border: none; border-radius: 9px; padding: 8px 12px;
     font-size: 13px; font-weight: 700; cursor: pointer; font-family:'Noto Sans KR',sans-serif; flex: 0 0 auto;
   }
 
   /* itinerary */
   .daytabs { display: flex; gap: 6px; margin-bottom: 10px; overflow-x: auto; }
-  .daytab { flex: 0 0 auto; padding: 7px 14px; border-radius: 999px; border: 1.5px solid #E2703A; background: #FFF; color: #E2703A; font-size: 13px; font-weight: 700; cursor: pointer; }
-  .daytab.active { background: #E2703A; color: #FFF; }
-  .daysub { font-size: 12px; color: #8B8272; margin: 0 0 4px; }
+  .daytab { flex: 0 0 auto; padding: 7px 14px; border-radius: 999px; border: 1.5px solid #D9453B; background: #FFF; color: #D9453B; font-size: 13px; font-weight: 700; cursor: pointer; }
+  .daytab.active { background: #D9453B; color: #FFF; }
+  .daysub { font-size: 12px; color: #808080; margin: 0 0 4px; }
   .timeline-item { display: flex; gap: 10px; margin-bottom: 14px; }
-  .timeline-time { flex: 0 0 52px; font-size: 12px; font-weight: 700; color: #E2703A; padding-top: 2px; }
+  .timeline-time { flex: 0 0 52px; font-size: 12px; font-weight: 700; color: #D9453B; padding-top: 2px; }
   .timeline-dot-col { flex: 0 0 10px; display: flex; flex-direction: column; align-items: center; }
-  .timeline-dot { width: 9px; height: 9px; border-radius: 50%; background: #E2703A; margin-top: 4px; }
-  .timeline-line { flex: 1; width: 2px; background: #ECE5D6; margin-top: 2px; }
+  .timeline-dot { width: 9px; height: 9px; border-radius: 50%; background: #D9453B; margin-top: 4px; }
+  .timeline-line { flex: 1; width: 2px; background: #E8E8E6; margin-top: 2px; }
   .timeline-body { flex: 1; padding-bottom: 2px; }
-  .timeline-place { font-size: 14.5px; font-weight: 700; color: #20304D; margin: 0 0 3px; }
-  .timeline-tip { font-size: 12.5px; color: #857C6D; margin: 0 0 4px; line-height: 1.5; }
-  .maplink { font-size: 11.5px; color: #E2703A; text-decoration: none; font-weight: 700; }
-  .plan-item { background: #FFFFFF; border: 1px solid #ECE5D6; border-radius: 12px; padding: 10px 10px 8px; margin-bottom: 10px; }
+  .timeline-place { font-size: 14.5px; font-weight: 700; color: #1F1F1F; margin: 0 0 3px; }
+  .timeline-tip { font-size: 12.5px; color: #7A7A7A; margin: 0 0 4px; line-height: 1.5; }
+  .maplink { font-size: 11.5px; color: #D9453B; text-decoration: none; font-weight: 700; }
+  .plan-item { background: #FFFFFF; border: 1px solid #E8E8E6; border-radius: 12px; padding: 10px 10px 8px; margin-bottom: 10px; }
   .plan-item .form-row { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; }
-  .plan-item .time-input { flex: 0 0 62px; font-weight: 700; color: #E2703A; text-align: center; padding: 8px 4px; }
+  .plan-item .time-input { flex: 0 0 62px; font-weight: 700; color: #D9453B; text-align: center; padding: 8px 4px; }
   .plan-item .place-input { flex: 1; font-weight: 700; font-size: 14.5px; resize: none; overflow: hidden; line-height: 1.4; display: block; min-height: 38px; }
-  .plan-item .tip-input { font-size: 12.5px; color: #857C6D; resize: none; overflow: hidden; line-height: 1.5; font-family: 'Noto Sans KR', sans-serif; display: block; min-height: 34px; }
+  .plan-item .tip-input { font-size: 12.5px; color: #7A7A7A; resize: none; overflow: hidden; line-height: 1.5; font-family: 'Noto Sans KR', sans-serif; display: block; min-height: 34px; }
   .plan-item .bottom-row { display: flex; justify-content: space-between; align-items: center; }
-  .plan-del { border: none; background: none; color: #C7BFAE; font-size: 18px; cursor: pointer; padding: 6px; flex: 0 0 auto; }
-  .plan-add-btn { width: 100%; background: #FFF; border: 1.5px dashed #E2703A; color: #E2703A; border-radius: 12px; padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; margin-top: 4px; }
+  .plan-del { border: none; background: none; color: #C4C4C4; font-size: 18px; cursor: pointer; padding: 6px; flex: 0 0 auto; }
+  .tl { position:relative; padding:4px 0 8px; }
+  .tl-item { position:relative; display:flex; gap:14px; }
+  .tl-rail { flex:0 0 26px; display:flex; flex-direction:column; align-items:center; }
+  .tl-dot { width:26px; height:26px; border-radius:50%; color:#FFF; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+  .tl-dot.food { background:#D9453B; } .tl-dot.spot { background:#1F1F1F; }
+  .tl-line { flex:1; width:2px; background:#E8E8E6; margin:4px 0; min-height:14px; }
+  .tl-main { flex:1; min-width:0; padding-bottom:18px; }
+  .tl-time { font-size:11.5px; color:#A8A8A8; margin:4px 0 2px; }
+  .tl-place { font-size:15px; font-weight:700; color:#1F1F1F; line-height:1.4; }
+  .tl-tip { font-size:13px; color:#5E5E5E; line-height:1.6; margin-top:4px; }
+  .tl-meta { display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap; }
+  .tl-map { font-size:12px; color:#D9453B; text-decoration:none; font-weight:700; }
+  .tl-dist { font-size:11.5px; color:#8E8E8E; }
+  .plan-reset { display:block; margin:12px auto 0; border:none; background:none; color:#8E8E8E; font-size:12px; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+  .plan-add-btn { width: 100%; background: #FFF; border: 1.5px dashed #D9453B; color: #D9453B; border-radius: 12px; padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; margin-top: 4px; }
 
   .form-grid { display: flex; flex-direction: column; gap: 8px; }
   .form-row { display: flex; gap: 8px; }
   input, select, textarea {
-    font-family: 'Noto Sans KR', sans-serif; border: 1px solid #E2DCCC; border-radius: 9px; padding: 9px 10px;
-    font-size: 14px; background: #FCFAF4; color: #2C3B57; width: 100%;
+    font-family: 'Noto Sans KR', sans-serif; border: 1px solid #DEDEDE; border-radius: 9px; padding: 9px 10px;
+    font-size: 14px; background: #FAFAF8; color: #3A3A3A; width: 100%;
   }
-  .addbtn { background: #20304D; color: #FAF6EF; border: none; border-radius: 9px; padding: 10px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; }
-  .addbtn.sub { background: #FFF; color: #20304D; border: 1.5px solid #20304D; }
-  .totalcard { background: #20304D; color: #FAF6EF; border-radius: 14px; padding: 14px 16px; margin: 4px 0 14px; display: flex; justify-content: space-between; align-items: baseline; }
-  .totalcard .lbl { font-size: 12.5px; color: #C9D3E4; }
+  .addbtn { background: #1F1F1F; color: #F7F7F5; border: none; border-radius: 9px; padding: 10px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; }
+  .addbtn.sub { background: #FFF; color: #1F1F1F; border: 1.5px solid #1F1F1F; }
+  .totalcard { background: #1F1F1F; color: #F7F7F5; border-radius: 14px; padding: 14px 16px; margin: 4px 0 14px; display: flex; justify-content: space-between; align-items: baseline; }
+  .totalcard .lbl { font-size: 12.5px; color: #CFCFCF; }
   .totalcard .val { font-family: 'Baloo 2', sans-serif; font-size: 22px; }
-  .exp-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 2px; border-bottom: 1px solid #F1EBDD; }
+  .exp-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 2px; border-bottom: 1px solid #F0F0EE; }
   .exp-row:last-child { border-bottom: none; }
-  .exp-main { font-size: 14px; color: #2C3B57; }
-  .exp-cat { font-size: 11.5px; color: #B4AA9A; }
-  .exp-amt { font-size: 14px; font-weight: 700; color: #20304D; }
-  .exp-del { border: none; background: none; color: #C7BFAE; font-size: 12px; margin-left: 8px; cursor: pointer; }
+  .exp-main { font-size: 14px; color: #3A3A3A; }
+  .exp-cat { font-size: 11.5px; color: #ABABAB; }
+  .exp-amt { font-size: 14px; font-weight: 700; color: #1F1F1F; }
+  .exp-del { border: none; background: none; color: #C4C4C4; font-size: 12px; margin-left: 8px; cursor: pointer; }
   .exp-item-left { display:flex; flex-direction:column; }
-  .empty-msg { font-size: 13px; color: #B4AA9A; text-align: center; padding: 18px 0; }
+  .empty-msg { font-size: 13px; color: #ABABAB; text-align: center; padding: 18px 0; }
 
   /* map tab */
-  .map-note { font-size: 12.5px; color: #857C6D; line-height: 1.6; margin: 0 0 12px; }
+  .map-note { font-size: 12.5px; color: #7A7A7A; line-height: 1.6; margin: 0 0 12px; }
   .route-num { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; color: #FFF; font-size: 12.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-  .route-num.food { background: #E2703A; }
-  .route-num.spot { background: #20304D; }
-  .route-item { display: flex; align-items: center; gap: 10px; background: #FFF; border: 1px solid #ECE5D6; border-radius: 12px; padding: 10px 12px; }
-  .route-item .name { flex: 1; font-size: 13.5px; color: #2C3B57; font-weight: 700; }
-  .route-item a.pin { flex: 0 0 auto; font-size: 11.5px; font-weight: 700; color: #E2703A; text-decoration: none; border: 1.5px solid #E2703A; border-radius: 999px; padding: 4px 10px; }
+  .route-num.food { background: #D9453B; }
+  .route-num.spot { background: #1F1F1F; }
+  .route-item { display: flex; align-items: center; gap: 10px; background: #FFF; border: 1px solid #E8E8E6; border-radius: 12px; padding: 10px 12px; }
+  .route-item .name { flex: 1; font-size: 13.5px; color: #3A3A3A; font-weight: 700; }
+  .route-item a.pin { flex: 0 0 auto; font-size: 11.5px; font-weight: 700; color: #D9453B; text-decoration: none; border: 1.5px solid #D9453B; border-radius: 999px; padding: 4px 10px; }
   .route-connector { display: flex; align-items: center; gap: 8px; padding: 4px 0 4px 13px; }
-  .route-connector .line { width: 2px; height: 16px; background: #ECE5D6; margin-left: 11px; }
-  .route-connector .chip { font-size: 11px; color: #99355A; background: #FBEAF0; border-radius: 999px; padding: 3px 9px; }
-  .legend { display: flex; gap: 14px; margin-bottom: 12px; font-size: 12px; color: #857C6D; }
+  .route-connector .line { width: 2px; height: 16px; background: #E8E8E6; margin-left: 11px; }
+  .route-connector .chip { font-size: 11px; color: #B23A31; background: #FBECEA; border-radius: 999px; padding: 3px 9px; }
+  .legend { display: flex; gap: 14px; margin-bottom: 12px; font-size: 12px; color: #7A7A7A; }
   .legend span { display: inline-flex; align-items: center; gap: 5px; }
   .legend .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 
   /* restaurant backup */
-  .resto-card { background: #FFF; border: 1px solid #ECE5D6; border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
-  .resto-card .name { font-size: 14.5px; font-weight: 700; color: #20304D; margin: 0 0 2px; }
-  .resto-card .area { font-size: 12px; color: #E2703A; font-weight: 700; margin: 0 0 4px; }
-  .resto-card .note { font-size: 12.5px; color: #857C6D; line-height: 1.5; margin: 0 0 8px; }
+  .resto-card { background: #FFF; border: 1px solid #E8E8E6; border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+  .resto-card .name { font-size: 14.5px; font-weight: 700; color: #1F1F1F; margin: 0 0 2px; }
+  .resto-card .area { font-size: 12px; color: #D9453B; font-weight: 700; margin: 0 0 4px; }
+  .resto-card .note { font-size: 12.5px; color: #7A7A7A; line-height: 1.5; margin: 0 0 8px; }
   .resto-card .actions { display: flex; justify-content: space-between; align-items: center; }
 
   /* emergency */
-  .emg-call { display: flex; align-items: center; justify-content: space-between; background: #FBEAF0; border: 1px solid #F0C3D5; border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; text-decoration: none; }
-  .emg-call .t1 { font-size: 13px; color: #99355A; margin: 0 0 3px; font-weight: 700; }
-  .emg-call .t2 { font-size: 11.5px; color: #A9758B; margin: 0; }
-  .emg-call .num { font-family: 'Baloo 2', sans-serif; font-size: 20px; color: #99355A; }
+  .emg-call { display: flex; align-items: center; justify-content: space-between; background: #FBECEA; border: 1px solid #F2C7C3; border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; text-decoration: none; }
+  .emg-call .t1 { font-size: 13px; color: #B23A31; margin: 0 0 3px; font-weight: 700; }
+  .emg-call .t2 { font-size: 11.5px; color: #B5706A; margin: 0; }
+  .emg-call .num { font-family: 'Baloo 2', sans-serif; font-size: 20px; color: #B23A31; }
   .info-card { margin-bottom: 10px; }
-  .info-card .t1 { font-size: 14px; font-weight: 700; color: #20304D; margin: 0 0 4px; }
-  .info-card .t2 { font-size: 12.5px; color: #857C6D; margin: 0 0 8px; line-height: 1.5; }
-  .info-card a.callbtn { display: inline-block; font-size: 13px; font-weight: 700; color: #E2703A; text-decoration: none; border: 1.5px solid #E2703A; border-radius: 999px; padding: 5px 14px; }
-  .tip-list { font-size: 12.5px; color: #857C6D; line-height: 1.8; padding-left: 18px; margin: 4px 0; }
+  .info-card .t1 { font-size: 14px; font-weight: 700; color: #1F1F1F; margin: 0 0 4px; }
+  .info-card .t2 { font-size: 12.5px; color: #7A7A7A; margin: 0 0 8px; line-height: 1.5; }
+  .info-card a.callbtn { display: inline-block; font-size: 13px; font-weight: 700; color: #D9453B; text-decoration: none; border: 1.5px solid #D9453B; border-radius: 999px; padding: 5px 14px; }
+  .tip-list { font-size: 12.5px; color: #7A7A7A; line-height: 1.8; padding-left: 18px; margin: 4px 0; }
 
   /* itinerary reorder */
-  .move-btn { border: none; background: #F3EEE1; color: #20304D; border-radius: 8px; width: 28px; height: 28px; font-size: 12px; cursor: pointer; flex: 0 0 auto; padding: 0; }
+  .move-btn { border: none; background: #F1F1EF; color: #1F1F1F; border-radius: 8px; width: 28px; height: 28px; font-size: 12px; cursor: pointer; flex: 0 0 auto; padding: 0; }
   .move-btn:disabled { opacity: .3; cursor: default; }
 
   /* expenses: rate, summary, inline edit */
-  .fx-row { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 13px; color: #857C6D; }
-  .fx-row input { width: 84px; text-align: center; font-weight: 700; color: #20304D; }
-  .sum-title { font-size: 13px; font-weight: 700; color: #20304D; margin: 0 0 8px; }
+  .fx-row { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 13px; color: #7A7A7A; }
+  .fx-row input { width: 84px; text-align: center; font-weight: 700; color: #1F1F1F; }
+  .sum-title { font-size: 13px; font-weight: 700; color: #1F1F1F; margin: 0 0 8px; }
   .sum-title:not(:first-child) { margin-top: 14px; }
   .sum-row { margin-bottom: 8px; }
   .sum-line { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
-  .sum-line .amt { color: #857C6D; white-space: nowrap; }
-  .sum-bar { height: 6px; background: #EFE7D6; border-radius: 999px; overflow: hidden; margin-top: 3px; }
-  .sum-bar i { display: block; height: 100%; background: #E2703A; border-radius: 999px; }
+  .sum-line .amt { color: #7A7A7A; white-space: nowrap; }
+  .sum-bar { height: 6px; background: #EDEDEB; border-radius: 999px; overflow: hidden; margin-top: 3px; }
+  .sum-bar i { display: block; height: 100%; background: #D9453B; border-radius: 999px; }
   .exp-edit { display: flex; flex-direction: column; gap: 6px; width: 100%; padding: 4px 0; }
 
   /* japanese cards */
-  .jp-card { background: #FFF; border: 1px solid #ECE5D6; border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
-  .jp-ko { font-size: 12px; color: #E2703A; font-weight: 700; margin: 0 0 4px; }
-  .jp-text { font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif; font-size: 20px; font-weight: 700; color: #20304D; line-height: 1.4; overflow-wrap: anywhere; }
-  .jp-sub { font-size: 12.5px; color: #857C6D; margin-top: 4px; line-height: 1.5; overflow-wrap: anywhere; }
+  .jp-card { background: #FFF; border: 1px solid #E8E8E6; border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+  .jp-ko { font-size: 12px; color: #D9453B; font-weight: 700; margin: 0 0 4px; }
+  .jp-text { font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif; font-size: 20px; font-weight: 700; color: #1F1F1F; line-height: 1.4; overflow-wrap: anywhere; }
+  .jp-sub { font-size: 12.5px; color: #7A7A7A; margin-top: 4px; line-height: 1.5; overflow-wrap: anywhere; }
   .jp-actions { display: flex; gap: 6px; margin-top: 10px; }
-  .jp-btn { flex: 1; border: 1.5px solid #20304D; background: #FFF; color: #20304D; border-radius: 999px; padding: 6px 4px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; }
-  .jp-btn.primary { background: #20304D; color: #FAF6EF; }
-  .jp-btn.del { flex: 0 0 auto; padding: 6px 12px; border-color: #D9D1BF; color: #B4AA9A; font-weight: 500; }
+  .jp-btn { flex: 1; border: 1.5px solid #1F1F1F; background: #FFF; color: #1F1F1F; border-radius: 999px; padding: 6px 4px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; }
+  .jp-btn.primary { background: #1F1F1F; color: #F7F7F5; }
+  .jp-btn.del { flex: 0 0 auto; padding: 6px 12px; border-color: #D4D4D4; color: #ABABAB; font-weight: 500; }
   .jp-phrase { cursor: pointer; }
   .jp-phrase .jp-text { font-size: 17px; }
-  .show-overlay { position: fixed; inset: 0; z-index: 100; background: #FAF6EF; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; cursor: pointer; }
+  .tr-card { padding:14px; }
+  .tr-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; font-weight:700; color:#1F1F1F; font-size:15px; }
+  .tr-swap { border:1.5px solid #1F1F1F; background:#FFF; color:#1F1F1F; border-radius:999px; padding:4px 10px; font-size:12px; font-weight:700; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+  .tr-card textarea { width:100%; box-sizing:border-box; min-height:64px; resize:none; margin-bottom:8px; font-size:15px; }
+  .tr-card .addbtn { width:100%; }
+  .tr-out { margin-top:12px; padding-top:12px; border-top:1px solid #F0F0EE; }
+  .tr-res { font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic','Meiryo',sans-serif; font-size:22px; font-weight:700; color:#1F1F1F; line-height:1.45; overflow-wrap:anywhere; margin-bottom:10px; }
+  .tr-msg { font-size:12px; color:#8E8E8E; margin-top:8px; }
+  .tr-msg.err { color:#C93A30; }
+  .show-speak { margin-top:22px; border:none; background:#1F1F1F; color:#F7F7F5; border-radius:999px; padding:10px 22px; font-size:15px; font-weight:700; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+  .show-overlay { position: fixed; inset: 0; z-index: 100; background: #F7F7F5; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; cursor: pointer; }
   .show-overlay.open { display: flex; }
-  .show-ko { font-size: 15px; color: #E2703A; font-weight: 700; margin-bottom: 18px; }
-  .show-jp { font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif; font-size: 34px; font-weight: 700; color: #20304D; line-height: 1.4; overflow-wrap: anywhere; }
-  .show-sub { font-size: 16px; color: #857C6D; margin-top: 16px; line-height: 1.6; overflow-wrap: anywhere; }
-  .show-hint { position: absolute; bottom: calc(24px + env(safe-area-inset-bottom)); font-size: 12px; color: #B4AA9A; }
-  .toast { position: fixed; left: 50%; bottom: calc(90px + env(safe-area-inset-bottom)); transform: translateX(-50%); background: #20304D; color: #FAF6EF; padding: 9px 16px; border-radius: 999px; font-size: 13px; z-index: 200; opacity: 0; pointer-events: none; transition: opacity .2s; max-width: 90%; text-align: center; }
+  .show-ko { font-size: 15px; color: #D9453B; font-weight: 700; margin-bottom: 18px; }
+  .show-jp { font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif; font-size: 34px; font-weight: 700; color: #1F1F1F; line-height: 1.4; overflow-wrap: anywhere; }
+  .show-sub { font-size: 16px; color: #7A7A7A; margin-top: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+  .show-hint { position: absolute; bottom: calc(24px + env(safe-area-inset-bottom)); font-size: 12px; color: #ABABAB; }
+  .toast { position: fixed; left: 50%; bottom: calc(90px + env(safe-area-inset-bottom)); transform: translateX(-50%); background: #1F1F1F; color: #F7F7F5; padding: 9px 16px; border-radius: 999px; font-size: 13px; z-index: 200; opacity: 0; pointer-events: none; transition: opacity .2s; max-width: 90%; text-align: center; }
   .toast.show { opacity: 1; }
 
   /* backup sheet */
-  .modal-back { position: fixed; inset: 0; background: rgba(32,48,77,.55); display: none; align-items: flex-end; justify-content: center; z-index: 50; }
+  .modal-back { position: fixed; inset: 0; background: rgba(20,20,20,.5); display: none; align-items: flex-end; justify-content: center; z-index: 50; }
   .modal-back.open { display: flex; }
-  .sheet { width: 100%; max-width: 460px; max-height: 88vh; overflow-y: auto; background: #FAF6EF; border-radius: 18px 18px 0 0; padding: 18px 16px calc(20px + env(safe-area-inset-bottom)); }
+  .sheet { width: 100%; max-width: 460px; max-height: 88vh; overflow-y: auto; background: #F7F7F5; border-radius: 18px 18px 0 0; padding: 18px 16px calc(20px + env(safe-area-inset-bottom)); }
   .sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-  .sheet-head h2 { font-family: 'Baloo 2', sans-serif; font-size: 18px; color: #20304D; margin: 0; }
-  .sheet-close { border: none; background: none; font-size: 22px; color: #9A9184; cursor: pointer; padding: 4px 8px; }
-  .bk-sub { font-size: 12px; color: #8B8272; margin: 0 0 12px; line-height: 1.6; }
-  .bk-h { font-size: 13.5px; font-weight: 700; color: #20304D; margin: 16px 0 6px; }
+  .sheet-head h2 { font-family: 'Baloo 2', sans-serif; font-size: 18px; color: #1F1F1F; margin: 0; }
+  .sheet-close { border: none; background: none; font-size: 22px; color: #8E8E8E; cursor: pointer; padding: 4px 8px; }
+  .bk-sub { font-size: 12px; color: #808080; margin: 0 0 12px; line-height: 1.6; }
+  .bk-h { font-size: 13.5px; font-weight: 700; color: #1F1F1F; margin: 16px 0 6px; }
   .bk-stack { display: flex; flex-direction: column; gap: 8px; }
   .bk-msg { font-size: 12.5px; margin: 10px 0 0; min-height: 18px; line-height: 1.5; }
   .bk-msg.ok { color: #2E7D4F; }
-  .bk-msg.err { color: #D85A30; }
+  .bk-msg.err { color: #C93A30; }
   .bk-textarea { height: 90px; font-size: 12px; resize: none; }
 </style>
 </head>
@@ -230,15 +281,13 @@
     </div>
 
     <div class="pane" id="pane-plan">
-      <div class="section-title">여행 일정<button class="edit-toggle" onclick="resetItinerary()">최신 일정</button></div>
-      <p class="map-note">순서대로 번호가 매겨져 있어요. 장소를 누르면 바로 수정, '지도' 버튼을 누르면 구글맵으로 연결돼요.</p>
-      <div class="legend"><span><i class="dot" style="background:#E2703A;"></i>식사</span><span><i class="dot" style="background:#20304D;"></i>장소</span></div>
+      <div class="section-title">여행 일정<button class="edit-toggle" id="plan-edit-btn" onclick="togglePlanEdit()">편집</button></div>
       <div class="daytabs" id="day-tabs"></div>
       <div class="daysub" id="day-sub"></div>
       <div id="day-body"></div>
     </div>
 
-    <div class="pane" id="pane-money">
+    <div class="pane" id="pane-money" hidden style="display:none !important">
       <div class="section-title">경비 관리</div>
       <div class="card">
         <div class="form-grid">
@@ -256,7 +305,7 @@
           </div>
           <select id="exp-day" aria-label="일차"></select>
           <button class="addbtn" onclick="addExpense()">추가</button>
-          <div id="exp-error" style="display:none; font-size:12px; color:#D85A30;"></div>
+          <div id="exp-error" style="display:none; font-size:12px; color:#C93A30;"></div>
         </div>
       </div>
       <div class="fx-row"><span>환율: 1엔 =</span><input type="number" id="fx-rate" inputmode="decimal" step="0.01" min="0" value="9.3" aria-label="환율" /><span>원</span></div>
@@ -277,7 +326,7 @@
           <input type="text" id="resto-area" placeholder="위치 (예: 하카타역 도보 5분)" />
           <input type="text" id="resto-note" placeholder="메모 (예: 아기의자 있음, 라멘)" onkeydown="if(event.key==='Enter')addResto()" />
           <button class="addbtn" onclick="addResto()">추가</button>
-          <div id="resto-error" style="display:none; font-size:12px; color:#D85A30;"></div>
+          <div id="resto-error" style="display:none; font-size:12px; color:#C93A30;"></div>
         </div>
       </div>
       <div id="resto-list"></div>
@@ -293,10 +342,16 @@
           <input type="text" id="shop-loc" placeholder="살 위치 (예: 돈키호테 텐진점)" />
           <input type="text" id="shop-note" placeholder="메모 (예: 예산 3000엔대)" onkeydown="if(event.key==='Enter')addShop()" />
           <button class="addbtn" onclick="addShop()">추가</button>
-          <div id="shop-error" style="display:none; font-size:12px; color:#D85A30;"></div>
+          <div id="shop-error" style="display:none; font-size:12px; color:#C93A30;"></div>
         </div>
       </div>
       <div id="shop-list"></div>
+    </div>
+
+    <div class="pane" id="pane-info">
+      <div class="section-title">기타 및 공연시간<button class="edit-toggle" id="info-edit-btn" onclick="toggleInfoEdit()">편집</button></div>
+      <p class="map-note">분류를 누르면 펼쳐져요. 시간표는 당일 한 번 더 확인하세요.</p>
+      <div id="info-list"></div>
     </div>
 
     <div class="pane" id="pane-emg">
@@ -333,6 +388,17 @@
       <div class="section-title">일본어 카드</div>
       <p class="map-note">카드를 누르면 화면 가득 크게 보여줘요. 택시 기사님이나 직원에게 화면을 그대로 보여주세요. 인터넷 없이도 돼요.</p>
 
+      <div class="card tr-card">
+        <div class="tr-head"><span>실시간 번역</span><button class="tr-swap" id="tr-swap">한국어 → 일본어 ⇄</button></div>
+        <textarea id="tr-in" placeholder="여기에 적으세요 (키보드의 마이크 버튼으로 말해도 돼요)"></textarea>
+        <button class="addbtn" id="tr-go">번역하기</button>
+        <div class="tr-out" id="tr-out" style="display:none;">
+          <div class="tr-res" id="tr-res" lang="ja"></div>
+          <div class="jp-actions"><button class="jp-btn primary" id="tr-speak">🔊 듣기</button><button class="jp-btn" id="tr-big">크게 보여주기</button><button class="jp-btn" id="tr-save">카드 저장</button></div>
+        </div>
+        <div class="tr-msg" id="tr-msg">번역은 인터넷이 필요해요. 저장한 카드와 듣기는 인터넷 없이도 돼요.</div>
+      </div>
+
       <div class="section-title" style="font-size:14px;">장소 · 주소</div>
       <p class="map-note" style="margin-top:-2px;">호텔의 일본어 이름·주소는 예약확인서를 보고 아래에서 추가해 두세요.</p>
       <div id="jp-places"></div>
@@ -342,7 +408,7 @@
           <input type="text" id="jp-jp" placeholder="일본어 (예: 호텔 예약확인서의 일본어 이름)" lang="ja" />
           <input type="text" id="jp-sub" placeholder="주소 · 메모 (선택)" onkeydown="if(event.key==='Enter')addJpPlace()" />
           <button class="addbtn" onclick="addJpPlace()">카드 추가</button>
-          <div id="jp-error" style="display:none; font-size:12px; color:#D85A30;"></div>
+          <div id="jp-error" style="display:none; font-size:12px; color:#C93A30;"></div>
         </div>
       </div>
 
@@ -354,10 +420,10 @@
   <div class="tabbar">
     <button class="tabbtn active" data-tab="pack"><span class="ic">🧳</span>준비물</button>
     <button class="tabbtn" data-tab="plan"><span class="ic">🗺️</span>일정</button>
-    <button class="tabbtn" data-tab="money"><span class="ic">💰</span>경비</button>
     <button class="tabbtn" data-tab="resto"><span class="ic">🍜</span>대체식당</button>
     <button class="tabbtn" data-tab="shop"><span class="ic">🛍️</span>쇼핑</button>
     <button class="tabbtn" data-tab="jp"><span class="ic">🗣️</span>일본어</button>
+    <button class="tabbtn" data-tab="info"><span class="ic">🎪</span>공연·기타</button>
     <button class="tabbtn" data-tab="emg"><span class="ic">🏥</span>긴급병원</button>
   </div>
 </div>
@@ -366,11 +432,29 @@
   <div class="show-ko" id="show-ko"></div>
   <div class="show-jp" id="show-jp" lang="ja"></div>
   <div class="show-sub" id="show-sub"></div>
+  <button class="show-speak" id="show-speak">🔊 일본어로 듣기</button>
   <div class="show-hint">화면을 누르면 닫혀요</div>
 </div>
 <div class="toast" id="toast"></div>
 
 <!-- 백업 / 복원 시트 -->
+<div class="modal-back" id="info-modal" onclick="if(event.target===this)closeInfoForm()">
+  <div class="sheet">
+    <div class="sheet-head"><h2 id="info-form-title">항목 수정</h2><button class="sheet-close" onclick="closeInfoForm()">✕</button></div>
+    <div class="info-form">
+      <div id="info-f-item">
+        <label>일차 (선택)</label><input type="text" id="info-f-day" placeholder="예: 1일차" />
+        <label>제목</label><input type="text" id="info-f-title" placeholder="예: 캐널시티 분수쇼" />
+        <label>내용 (한 줄에 하나씩)</label><textarea id="info-f-lines" placeholder="예: 밤 18:00~22:00 · 30분마다"></textarea>
+      </div>
+      <div id="info-f-group">
+        <label>아이콘</label><input type="text" id="info-f-icon" placeholder="예: 🎭" />
+        <label>분류 이름</label><input type="text" id="info-f-gtitle" placeholder="예: 공연 · 쇼 시간" />
+      </div>
+      <div class="btns"><button class="del" id="info-f-del">삭제</button><button class="addbtn" id="info-f-save">저장</button></div>
+    </div>
+  </div>
+</div>
 <div class="modal-back" id="backup-modal" onclick="if(event.target===this)closeBackup()">
   <div class="sheet">
     <div class="sheet-head">
@@ -438,32 +522,39 @@ const DEFAULT_PACKING = [
 ].map(g => ({ cat: g.cat, items: g.items.map(t => ({ id: uid(), text: t, done: false })) }));
 
 const DEFAULT_ITINERARY = {
-  "1일차": { sub: "10/6 (화) · 도착 후 바로 호빵맨 박물관", items: [
-    { time:"오전", place:"인천 10:05 출발 → 후쿠오카 11:30 도착", tip:"비행 1시간 25분, 시차 없음. 기내식 또는 아기 간식 준비" },
-    { time:"낮", place:"입국심사·수하물 수령 → 하카타행 지하철", tip:"하카타역 도착 후 9호텔에 큰 짐 맡기고 이동 (체크인 전이라도 짐만 보관)", dist:"공항 지하철 약 5분 · 3km" },
-    { time:"점심~오후", place:"호빵맨 어린이박물관 (하카타 리버레인)", tip:"만1세부터 유료, 마지막 입장 16시. 유모차 1층 보관, 이유식·생수 반입 가능. 점심은 박물관 내 푸드코트에서 해결", dist:"하카타역에서 지하철 약 5분 · 1.5km" },
-    { time:"저녁", place:"그릴 오미야 (JR 하카타 시티)", tip:"함박스테이크 전문, 아기의자·키즈메뉴 있음, 구글맵 예약 가능, 소스 따로 요청 가능", dist:"박물관에서 하카타역까지 지하철 약 5분" },
-    { time:"밤", place:"9호텔 하카타", tip:"체크인 · 휴식, 인근 편의점에서 기저귀 추가 구매 가능", dist:"하카타역에서 도보 5분 · 400m" }
+  "1일차": { sub: "10/6 (화) · 호빵맨 박물관 → 캐널시티 → 야키니쿠", items: [
+    { time:"오전", place:"후쿠오카공항 도착 (국제선 11:30)", tip:"점심이 늦으니 아기 간식 미리 챙기기" },
+    { time:"낮", place:"카고패스로 캐리어 호텔 보내기", tip:"국제선 1층 도착 로비 카운터 · 7:30~14:00 접수 · 1개 550엔~ · 기저귀 · 간식은 따로 챙기기" },
+    { time:"점심~오후", place:"호빵맨 어린이박물관", tip:"클룩 바우처로 입장 · 점심은 박물관 안에서 · 마지막 입장 16시 · 기사님께 일본어 카드의 박물관 이름 보여주기", dist:"공항에서 택시 약 20~25분 (하카타 리버레인)" },
+    { time:"오후", place:"9호텔 체크인 → 캐널시티", tip:"체크인하면서 카고패스 캐리어 받기 · 18:00 분수쇼 보고 18:30쯤 식당으로", dist:"도보 10분 + 7분" },
+    { time:"저녁", place:"야키니쿠 카쿠라 기온점", tip:"18:45 예약 완료 · 아기 의자는 일본어 카드로 요청", dist:"도보 10분" },
+    { time:"밤", place:"9호텔 하카타", tip:"휴식 · 근처 편의점에서 기저귀 구매 가능", dist:"도보 5분" }
   ]},
-  "2일차": { sub: "10/7 (수) · 렌트카로 마린월드", items: [
-    { time:"아침", place:"호텔 조식 → 렌트카 픽업", tip:"카시트 장착 확인 후 출발" },
-    { time:"오전~점심", place:"마린월드 우미노나카미치", tip:"돌고래쇼는 끝나기 전에 미리 가서 자리잡기, 아기의자 끈 없는 것도 있으니 잘 찾기", dist:"렌트카로 약 35분 · 25km" },
-    { time:"점심", place:"마린월드 '레일리 레스토랑'", tip:"1층, 10:30~17:00 운영, 아기의자·아기식기·키즈메뉴 있음, 한국어메뉴판·카드결제 가능", dist:"돌고래쇼장에서 도보 1분" },
-    { time:"오후", place:"마린월드 터치풀 & 산책", tip:"실내외 섞여있어 아기 컨디션 봐가며 관람, 유모차 대여 가능", dist:"레스토랑에서 도보 이동" },
-    { time:"저녁", place:"야키니쿠 카쿠라 기온마치점", tip:"그랜드하얏트 후쿠오카(캐널시티 앞), 아기의자·아기식기류 있음, 구글맵으로 예약 가능", dist:"하카타 복귀, 렌트카로 약 35분 · 25km" }
+  "2일차": { sub: "10/7 (수) · 마린월드 → 휴식 → 하카타 마타", items: [
+    { time:"아침", place:"호텔 조식", tip:"11:00 돌고래 쇼에 맞춰 9:45쯤 출발" },
+    { time:"오전", place:"전철로 마린월드 이동", tip:"기온역 → 하카타역 → JR 가시이역 환승 → 우미노나카미치역 → 도보 5~10분 · 약 45분 · 가시이선은 배차가 드무니 시간 확인" },
+    { time:"오전", place:"마린월드 우미노나카미치", tip:"마이리얼트립 E티켓(성인) · 아진이 무료 · 11:00 돌고래·바다사자 쇼 · 11:45 정어리 타임 · 유모차 대여(보증금 500엔)" },
+    { time:"점심", place:"레스토랑 레이리 (마린월드 1층)", tip:"키즈 메뉴 있음 · 12시 전에 들어가기 · 12:20 펭귄 퍼레이드 · 13:30 돌고래 쇼 2회차", },
+    { time:"오후", place:"14:35 배로 하카타 복귀", tip:"선착장은 마린월드 바로 앞(JR역 아님) · 성인 1,300엔, 유아 무료 · 놓치면 선착장 시간표 확인 → 1시간 넘게 기다려야 하면 JR로 · 결항 시에도 JR로 · 배 20분 + 택시 10분" },
+    { time:"오후", place:"9호텔 · 낮잠", tip:"15:15쯤 도착. 안 자면 → JR 하카타 시티 옥상 정원(무료 · 10~22시 · 미니 전차)에서 놀다가 걸어서 식당으로" },
+    { time:"저녁", place:"규슈노 사케토 사카나 하카타 마타", tip:"19:00 예약 완료 · 개별실 · 아기 의자 요청 · 아기는 계란말이 · 흰밥 · 소금구이", dist:"호텔에서 택시 5~7분 · 하카타역 지쿠시 출구 도보 6분" },
+    { time:"밤", place:"9호텔 하카타", tip:"휴식", dist:"택시 5~7분" }
   ]},
-  "3일차": { sub: "10/8 (목) · 렌트카로 유후인 & 아프리칸사파리", items: [
-    { time:"아침", place:"호텔 조식", tip:"장거리 이동일이라 든든하게 챙겨 먹고 출발" },
-    { time:"오전", place:"하카타 → 유후인 이동", tip:"렌트카로 약 1시간 20분, 아기 낮잠 시간에 맞춰 출발하면 편함", dist:"렌트카로 약 1시간 20분 · 75km" },
-    { time:"점심", place:"유후인 온천마을 산책 & 라멘 사무라이", tip:"온천마을 특유의 골목 산책, 유모차보다 아기띠가 편한 구간 있음", dist:"유후인 시내, 도보 이동" },
-    { time:"오후", place:"유후인 → 아프리칸사파리", tip:"드라이브스루 사파리라 아기 태운 채 차로 관람 가능해서 이동 부담이 적음", dist:"렌트카로 약 40분 · 30km" },
-    { time:"저녁", place:"하카타 복귀 → 렌트카 반납 → 하카타 잇소우", tip:"하카타역 동쪽출구 도보 6분, 돈코츠 라멘 로컬 맛집. 장거리 운전 후라 호텔에서 가까운 곳으로. 좌석 협소할 수 있어 웨이팅 참고", dist:"렌트카로 약 2시간 · 100km" }
+  "3일차": { sub: "10/8 (목) · 렌터카 · 사파리 → 유후인", items: [
+    { time:"아침", place:"호텔 조식 → 렌터카 픽업 (아비스 고후쿠마치점)", tip:"9:45 픽업 · 카시트 장착 확인 · 예약은 08:00~20:00", dist:"" },
+    { time:"오전", place:"아프리칸 사파리 (九州自然動物公園)", tip:"10:00 출발, 차에서 아진이 낮잠 · 9:00~16:00 · 성인 2,600엔, 아진이 무료 · 내 차로 6km 코스 약 1시간 + 동물 체험 구역 · 점심이 늦으니 간식 챙기기", dist:"고속도로 약 2시간" },
+    { time:"점심", place:"유노타케안 (湯の岳庵) · 긴린코 호수 옆", tip:"14:00 예약 완료 · 어린이 세트 1,650엔 · 테이블석 · 주차장 있음 · 전화 0977-84-2970", dist:"차로 약 40분" },
+    { time:"오후", place:"긴린코 호수 → 유노츠보 거리 → 플로럴 빌리지", tip:"플로럴 빌리지 9:30~17:30 · 부엉이 · 작은 동물 · 유모차 OK · 좁은 골목은 아기띠", dist:"도보" },
+    { time:"저녁 전", place:"후쿠오카 복귀 → 주유 → 렌터카 반납", tip:"16:30 유후인 출발 · 20:00까지 반납 · 반납 전 주유", dist:"고속도로 약 1시간 40분" },
+    { time:"저녁", place:"웨스트 우동 기온점 (ウエスト)", tip:"11:00~23:30 · 연중무휴 · 미니 우동 520엔 · 현금/QR만 (카드 X) · 아기 의자는 현장 확인", dist:"반납 후 택시 5분 · 호텔에서 도보 5분" },
+    { time:"밤", place:"9호텔 하카타", tip:"휴식" }
   ]},
-  "4일차": { sub: "10/9 (금) · 캐널시티 마무리 후 17:30 출국", items: [
-    { time:"아침", place:"호텔 조식 → 체크아웃 (짐은 호텔에 보관)", tip:"9호텔 하카타는 짐 보관 서비스 이용 가능한지 체크인 시 확인해두면 편함" },
-    { time:"오전~점심", place:"캐널시티 하카타 쇼핑 & 라멘스타디움 '라멘지난보'", tip:"유모차·휠체어 무료 대여(1층), 분수쇼 관람, 점심은 라멘지난보(아기의자·아기식기·한국어메뉴판)", dist:"지하철+도보 약 15분 · 2.5km" },
-    { time:"오후", place:"호텔에서 짐 찾아 공항으로 이동", tip:"공항선 지하철 약 5분. 17:30 출발이라 15:00~15:30까지 공항 도착 목표로 여유 있게 출발", dist:"도보+지하철 약 20분" },
-    { time:"공항", place:"후쿠오카공항 → 인천 17:30 출발", tip:"수속·보안검색 시간 고려해 아기 컨디션 봐가며 이동", dist:"공항 내 이동" }
+  "4일차": { sub: "10/9 (금) · 라라포트 → 17:30 귀국", items: [
+    { time:"아침", place:"호텔 조식 → 짐 정리 → 체크아웃", tip:"10:00쯤 체크아웃 (11:00까지)" },
+    { time:"오전", place:"후쿠오카 장난감 미술관 (라라포트 오벌 파크 1층)", tip:"10:30~12:00 · 0~2세 전용 아기 광장 · 성인 1,600엔, 아진이 1,200엔(온라인) / 1시간권 1,100엔(현장) · 유모차 X · 신발 벗고 · 어른 양말 · 재입장 X · 들어가기 전 기저귀", dist:"짐 싣고 택시 15~20분" },
+    { time:"점심", place:"건담 연출 → 양식 다이메이켄 (洋食や 三代目 たいめいけん)", tip:"건담은 매시 정각 약 3분 (12:00 / 13:00) · 점심 13:30쯤 · 3층 그랜드 다이닝 · 오므라이스 · 키즈 메뉴 있음 · 11:00~22:00 · 대안: 같은 3층 푸드코트 (가족용 좌식 자리 · 키즈 파크 · 중식 · 정식 등)" },
+    { time:"오후", place:"라라포트 쇼핑", tip:"3층 아카짱혼포 (기저귀 · 이유식 · 기내 간식) · 14:50까지 마무리" },
+    { time:"오후", place:"택시로 후쿠오카공항 국제선", tip:"15:00 출발 · 15:30 도착 · 17:30 출발", dist:"택시 20~25분" }
   ]}
 };
 Object.values(DEFAULT_ITINERARY).forEach(d => d.items.forEach(it => it.id = uid()));
@@ -575,7 +666,44 @@ function renderDayTabs() {
     tabs.appendChild(b);
   });
 }
+let planEdit = false;
+function togglePlanEdit() {
+  planEdit = !planEdit;
+  const b = document.getElementById('plan-edit-btn');
+  b.textContent = planEdit ? '완료' : '편집';
+  b.classList.toggle('on', planEdit);
+  renderDayBody();
+}
 function renderDayBody() {
+  if (planEdit) return renderDayBodyEdit();
+  const d = itinerary[currentDay];
+  document.getElementById('day-sub').textContent = d.sub;
+  const body = document.getElementById('day-body');
+  body.innerHTML = '';
+  const tl = document.createElement('div');
+  tl.className = 'tl';
+  if (d.items.length === 0) tl.innerHTML = '<div class="empty-msg">일정이 없어요. 편집을 눌러 추가해 주세요.</div>';
+  d.items.forEach((it, idx) => {
+    const isFood = /아침|점심|저녁/.test(it.time || '');
+    const last = idx === d.items.length - 1;
+    const next = d.items[idx + 1];
+    const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(it.place + ' 후쿠오카');
+    const row = document.createElement('div');
+    row.className = 'tl-item';
+    row.innerHTML =
+      '<div class="tl-rail"><div class="tl-dot ' + (isFood ? 'food' : 'spot') + '">' + (idx + 1) + '</div>' + (last ? '' : '<div class="tl-line"></div>') + '</div>' +
+      '<div class="tl-main">' +
+        (it.time ? '<div class="tl-time">' + esc(it.time) + '</div>' : '') +
+        '<div class="tl-place">' + esc(it.place || '(이름 없음)') + '</div>' +
+        (it.tip ? '<div class="tl-tip">' + esc(it.tip) + '</div>' : '') +
+        '<div class="tl-meta">' + (it.place ? '<a class="tl-map" href="' + mapUrl + '" target="_blank" rel="noopener">지도 ↗</a>' : '') +
+        (next && next.dist ? '<span class="tl-dist">→ 다음 장소 ' + esc(next.dist) + '</span>' : '') + '</div>' +
+      '</div>';
+    tl.appendChild(row);
+  });
+  body.appendChild(tl);
+}
+function renderDayBodyEdit() {
   const d = itinerary[currentDay];
   document.getElementById('day-sub').textContent = d.sub;
   const body = document.getElementById('day-body');
@@ -646,6 +774,11 @@ function renderDayBody() {
     renderDayBody();
   });
   body.appendChild(addBtn);
+  const reset = document.createElement('button');
+  reset.className = 'plan-reset';
+  reset.textContent = '최신 기본 일정으로 되돌리기';
+  reset.addEventListener('click', resetItinerary);
+  body.appendChild(reset);
 }
 
 /* ---------- expenses ---------- */
@@ -888,12 +1021,86 @@ function showBig(jp, ko, sub) {
   document.getElementById('show-sub').textContent = sub || '';
   document.getElementById('show-overlay').classList.add('open');
 }
-function closeShow() { document.getElementById('show-overlay').classList.remove('open'); }
+function closeShow() { if (window.speechSynthesis) speechSynthesis.cancel(); document.getElementById('show-overlay').classList.remove('open'); }
+
+/* ---------- 듣기 (기기 음성 · 인터넷 없이 동작) ---------- */
+function speak(text, lang) {
+  if (!text) return;
+  if (!('speechSynthesis' in window)) { toast('이 기기에서는 듣기를 지원하지 않아요'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = 0.9;
+  const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.replace('_', '-').toLowerCase().startsWith(lang.slice(0, 2)));
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+if ('speechSynthesis' in window) { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices(); }
+document.getElementById('show-speak').addEventListener('click', (e) => {
+  e.stopPropagation();
+  speak(document.getElementById('show-jp').textContent, 'ja-JP');
+});
+
+/* ---------- 실시간 번역 (MyMemory 무료 번역 · 인터넷 필요) ---------- */
+let trDir = 'ko|ja';
+let trLast = null;
+function trSetMsg(t, err) { const m = document.getElementById('tr-msg'); m.textContent = t; m.className = 'tr-msg' + (err ? ' err' : ''); }
+function decodeEntities(t) { const ta = document.createElement('textarea'); ta.innerHTML = t; return ta.value; }
+document.getElementById('tr-swap').addEventListener('click', () => {
+  trDir = trDir === 'ko|ja' ? 'ja|ko' : 'ko|ja';
+  document.getElementById('tr-swap').textContent = trDir === 'ko|ja' ? '한국어 → 일본어 ⇄' : '日本語 → 한국어 ⇄';
+  document.getElementById('tr-in').placeholder = trDir === 'ko|ja' ? '여기에 적으세요 (키보드의 마이크 버튼으로 말해도 돼요)' : 'ここに日本語で入力してください';
+  document.getElementById('tr-res').lang = trDir === 'ko|ja' ? 'ja' : 'ko';
+  document.getElementById('tr-out').style.display = 'none';
+  trLast = null;
+});
+document.getElementById('tr-in').addEventListener('input', e => autoGrow(e.target));
+async function runTranslate() {
+  const text = document.getElementById('tr-in').value.trim();
+  if (!text) { trSetMsg('번역할 문장을 적어 주세요.', true); return; }
+  if (text.length > 450) { trSetMsg('한 번에 450자까지 번역할 수 있어요.', true); return; }
+  if (navigator.onLine === false) { trSetMsg('인터넷에 연결되지 않았어요. 저장해 둔 카드를 이용해 주세요.', true); return; }
+  const btn = document.getElementById('tr-go');
+  btn.disabled = true; btn.textContent = '번역 중…';
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 12000);
+  try {
+    const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=' + encodeURIComponent(trDir);
+    const r = await fetch(url, { signal: ctrl.signal });
+    const d = await r.json();
+    const out = d && d.responseData && d.responseData.translatedText ? decodeEntities(d.responseData.translatedText) : '';
+    if (!r.ok || d.responseStatus != 200 || !out || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(out)) throw new Error('bad');
+    trLast = trDir === 'ko|ja' ? { ko: text, jp: out } : { ko: out, jp: text };
+    document.getElementById('tr-res').textContent = out;
+    document.getElementById('tr-out').style.display = '';
+    document.getElementById('tr-speak').textContent = trDir === 'ko|ja' ? '🔊 듣기' : '🔊 한국어로 듣기';
+    trSetMsg('기계 번역이라 어색할 수 있어요. 중요한 내용은 짧고 쉬운 문장으로 적어 주세요.', false);
+  } catch (e) {
+    trSetMsg('번역에 실패했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.', true);
+  } finally {
+    clearTimeout(timer);
+    btn.disabled = false; btn.textContent = '번역하기';
+  }
+}
+document.getElementById('tr-go').addEventListener('click', runTranslate);
+document.getElementById('tr-speak').addEventListener('click', () => {
+  if (!trLast) return;
+  if (trDir === 'ko|ja') speak(trLast.jp, 'ja-JP'); else speak(trLast.ko, 'ko-KR');
+});
+document.getElementById('tr-big').addEventListener('click', () => { if (trLast) showBig(trLast.jp, trLast.ko, ''); });
+document.getElementById('tr-save').addEventListener('click', () => {
+  if (!trLast) return;
+  jpPlaces.push({ id: uid(), ko: trLast.ko, jp: trLast.jp, sub: '' });
+  saveJSON('jp-places', jpPlaces);
+  renderJp();
+  toast('카드로 저장했어요');
+});
 
 /* ---------- japanese cards ---------- */
 // 주소는 틀리면 곤란해서 확실한 이름만 넣어뒀어요. 호텔 등은 직접 추가해 주세요.
 const DEFAULT_JP_PLACES = [
   { ko: '후쿠오카공항', jp: '福岡空港', sub: '' },
+  { ko: '9호텔 하카타 (숙소)', jp: '9HOTEL HAKATA', sub: '福岡県福岡市博多区冷泉町9-16' },
   { ko: '하카타역', jp: '博多駅', sub: '' },
   { ko: '캐널시티 하카타', jp: 'キャナルシティ博多', sub: '' },
   { ko: '호빵맨 어린이박물관', jp: '福岡アンパンマンこどもミュージアム（博多リバレイン内）', sub: '' },
@@ -915,6 +1122,7 @@ const PHRASES = [
     { ko: '약국은 어디예요?', jp: '薬局はどこですか', ro: '얏쿄쿠와 도코데스카' }
   ]},
   { group: '식당', items: [
+    { ko: '아기 의자·유아 식기 부탁드려요 (18개월 아기)', jp: '子供椅子と子供用の食器をお願いします（18ヶ月の子供が一緒です）。', ro: '코도모이스토 코도모요-노 숏키오 오네가이시마스' },
     { ko: '아기 의자 있나요?', jp: '子ども用の椅子はありますか', ro: '코도모요-노 이스와 아리마스카' },
     { ko: '아기 식기 있나요?', jp: '子ども用の食器はありますか', ro: '코도모요-노 숏키와 아리마스카' },
     { ko: '아기가 먹을 수 있는 메뉴 있나요?', jp: '赤ちゃんが食べられるメニューはありますか', ro: '아카챵가 타베라레루 메뉴-와 아리마스카' },
@@ -1008,7 +1216,7 @@ function buildBackup() {
     app: BACKUP_APP_ID,
     version: 1,
     exportedAt: new Date().toISOString(),
-    data: { packing, itinerary, expenses, restos, shopping, jpPlaces, fxRate }
+    data: { packing, itinerary, expenses, restos, shopping, jpPlaces, fxRate, infoGroups }
   };
 }
 function backupFileName() {
@@ -1029,7 +1237,7 @@ function setBkMsg(text, ok) {
 function refreshBackupStatus() {
   const items = packing.reduce((s, g) => s + g.items.length, 0);
   const days = Object.values(itinerary).reduce((s, d) => s + d.items.length, 0);
-  let line = '지금 데이터: 준비물 ' + items + '개 · 일정 ' + days + '개 · 경비 ' + expenses.length + '건 · 식당 ' + restos.length + '곳 · 쇼핑 ' + shopping.length + '개';
+  let line = '지금 데이터: 준비물 ' + items + '개 · 일정 ' + days + '개 · 식당 ' + restos.length + '곳 · 쇼핑 ' + shopping.length + '개';
   return window.storage.get('meta-last-backup').then(r => {
     const t = r ? fmtDate(JSON.parse(r.value)) : '';
     line += '\n마지막 백업: ' + (t || '아직 없음');
@@ -1138,7 +1346,15 @@ function parseBackup(text) {
     jpPlaces: Array.isArray(d.jpPlaces)
       ? d.jpPlaces.map(p => ({ id: asStr(p && p.id) || uid(), ko: asStr(p && p.ko), jp: asStr(p && p.jp), sub: asStr(p && p.sub) }))
       : null,
-    fxRate: Number(d.fxRate) > 0 && isFinite(Number(d.fxRate)) ? Number(d.fxRate) : null
+    fxRate: Number(d.fxRate) > 0 && isFinite(Number(d.fxRate)) ? Number(d.fxRate) : null,
+    // 기타·공연시간 탭은 나중에 생겨서 옛 백업에는 없을 수 있어요
+    infoGroups: Array.isArray(d.infoGroups)
+      ? withInfoIds(d.infoGroups.filter(g => g && typeof g === 'object').map(g => ({
+          id: asStr(g.id), icon: asStr(g.icon), title: asStr(g.title),
+          items: Array.isArray(g.items) ? g.items.filter(i => i && typeof i === 'object').map(i => ({
+            id: asStr(i.id), day: asStr(i.day), title: asStr(i.title),
+            lines: Array.isArray(i.lines) ? i.lines.map(asStr) : [] })) : [] })))
+      : null
   };
 }
 function applyBackupText(text) {
@@ -1146,7 +1362,7 @@ function applyBackupText(text) {
   try { data = parseBackup(text); } catch (e) { setBkMsg(e.message, false); return; }
   const items = data.packing.reduce((s, g) => s + g.items.length, 0);
   const ok = confirm('지금 폰의 데이터가 백업 내용으로 바뀌어요.\n\n' +
-    '백업에 든 내용: 준비물 ' + items + '개 · 경비 ' + data.expenses.length + '건 · 식당 ' + data.restos.length + '곳 · 쇼핑 ' + data.shopping.length + '개\n\n복원할까요?');
+    '백업에 든 내용: 준비물 ' + items + '개 · 식당 ' + data.restos.length + '곳 · 쇼핑 ' + data.shopping.length + '개\n\n복원할까요?');
   if (!ok) return;
   packing = data.packing;
   itinerary = data.itinerary;
@@ -1154,6 +1370,7 @@ function applyBackupText(text) {
   restos = data.restos;
   shopping = data.shopping;
   if (data.jpPlaces) jpPlaces = data.jpPlaces;
+  if (data.infoGroups) infoGroups = data.infoGroups;
   if (data.fxRate) { fxRate = data.fxRate; document.getElementById('fx-rate').value = fxRate; }
   editingIdx = -1;
   saveAll();
@@ -1184,6 +1401,7 @@ function saveAll() {
   saveJSON('shopping-data', shopping);
   saveJSON('jp-places', jpPlaces);
   saveJSON('fx-rate', fxRate);
+  saveJSON('info-data', infoGroups);
 }
 function renderAll() {
   renderPacking();
@@ -1194,6 +1412,216 @@ function renderAll() {
   fillExpDay();
   renderExpenses();
   renderJp();
+  renderInfo();
+}
+
+/* ---------- 기타 · 공연시간 ---------- */
+// 고정 안내 정보(코드에서 관리). 내용을 바꾸면 sw.js의 CACHE 버전도 올릴 것.
+const DEFAULT_INFO = [
+  { icon: '🎭', title: '공연 · 쇼 시간', items: [
+    { day: '1일차', title: '호빵맨 박물관 스테이지 쇼', lines: [
+      '야나세 다카시 극장 · 1회 약 30분',
+      '회차 시간은 입장할 때 안내판에서 확인',
+      '30분 전부터 자리 잡기 · 10월은 할로윈 이벤트'
+    ]},
+    { day: '1일차', title: '캐널시티 분수쇼', lines: [
+      '지하1층 선플라자 스테이지',
+      '낮 10:00~17:30 · 1시간마다',
+      '밤 18:00~22:00 · 30분마다 → 18:00 쇼 보고 18:30쯤 식당으로'
+    ]},
+    { day: '2일차', title: '마린월드 쇼 (평일)', lines: [
+      '돌고래·바다사자 11:00 · 13:30 · 15:30 (약 30분)',
+      '물범 10:40 · 정어리 11:45 · 펭귄 퍼레이드 12:20',
+      '수조 런치타임 13:00 · 상괭이 14:30'
+    ]}
+  ]},
+  { icon: '⏰', title: '운영시간 · 입장', items: [
+    { day: '1일차', title: '호빵맨 어린이박물관', lines: [
+      '10:00~17:00 · 마지막 입장 16:00',
+      '1세 이상 유료 · 우리는 3장'
+    ]},
+    { day: '1일차', title: '야키니쿠 카쿠라 기온점', lines: [
+      '평일 저녁 17:00~24:00 · 전면 금연'
+    ]},
+    { day: '2일차', title: '마린월드 우미노나카미치', lines: [
+      '9:30~17:30 · 마지막 입장 16:30',
+      '성인 2,500엔 · 3세 미만 무료 → 우리는 성인 2장'
+    ]},
+    { day: '2일차', title: '배 (우미나카 라인) 돌아오는 편', lines: [
+      '우미노나카미치 발: 9:35 · 11:35 · 14:35 · 16:35 (A 운항표)',
+      '날에 따라 B 운항표: 10:35 · 11:35 · 13:35 · 14:35 · 15:35 · 16:35 · 17:35',
+      '우리는 14:35 (두 운항표 모두 있음) · 약 20분',
+      '놓치면 선착장 시간표 확인 → 1시간 넘게 기다려야 하면 JR로',
+      '성인 1,300엔 · 유아 무료 · 날씨 나쁘면 결항될 수 있음'
+    ]},
+    { day: '2일차', title: 'JR 하카타 시티 옥상 정원', lines: [
+      '10:00~22:00 · 무료 · 미니 전차(유료) · 철도 신사',
+      '아진이가 낮잠 안 자면 여기서 놀다가 식당으로'
+    ]},
+    { day: '3일차', title: '아프리칸 사파리', lines: [
+      '9:00~16:00 · 연중무휴 · 성인 2,600엔 · 4세 미만 무료',
+      '내 차로 돌기 약 1시간 · 정글버스 성인 1,100엔(약 50분)'
+    ]},
+    { day: '3일차', title: '유후인 플로럴 빌리지', lines: [
+      '9:30~17:30 · 유모차 OK · 부엉이 숲은 별도 요금'
+    ]},
+    { day: '3일차', title: '렌터카 (아비스 고후쿠마치점)', lines: [
+      '10/8 08:00~20:00 · 미니밴 · 카시트 · ETC 카드 포함',
+      '반납 전 주유'
+    ]},
+    { day: '4일차', title: '후쿠오카 장난감 미술관', lines: [
+      '10:00~17:00 · 라라포트 오벌 파크 1층',
+      '성인 1,600엔 · 6개월~초등 1,200엔 (온라인) · 1시간권 1,100엔 (현장)',
+      '유모차 X · 신발 벗고 · 어른 양말 · 재입장 X · 음식 X'
+    ]},
+    { day: '4일차', title: '라라포트 건담', lines: [
+      '낮 10:00~18:00 매시 정각 움직임 (약 3분)'
+    ]},
+    { day: '4일차', title: '라라포트 후쿠오카', lines: [
+      '매장 10:00~21:00 · 식당 · 푸드코트 11:00~22:00',
+      '아카짱혼포 3층 (10:00~21:00)',
+      '3층 그랜드 다이닝: 푸드코트 + 레스토랑 · 가족용 좌식 자리 · 키즈 파크'
+    ]},
+    { day: '숙소', title: '9호텔 하카타', lines: [
+      '체크인 15:00 · 체크아웃 11:00 · 프런트 24시간'
+    ]}
+  ]},
+  { icon: '✅', title: '예약 · 확인할 일', items: [
+    { day: '1일차', title: '✓ 호빵맨 박물관 티켓 · 클룩 예약 완료', lines: [
+      '10/6 · 3장 · 입장할 때 클룩 바우처 보여주기'
+    ]},
+    { day: '1일차', title: '✓ 카쿠라 18:45 · 예약 완료', lines: [
+      'AutoReserve 좌석 예약 · 아기 의자는 일본어 카드로 요청'
+    ]},
+    { day: '2일차', title: '✓ 마린월드 E티켓 · 마이리얼트립', lines: [
+      '성인 E티켓 · 아진이 무료(3세 미만) · 이용일/유효기간 확인'
+    ]},
+    { day: '2일차', title: '✓ 하카타 마타 19:00 · 예약 완료 (타베로그)', lines: [
+      '개별실 · 아기 의자 요청 · 매일 17:00~23:00'
+    ]},
+    { day: '3일차', title: '✓ 유노타케안 14:00 · 예약 완료', lines: [
+      '어린이 세트 1,650엔 · 아기 의자 요청 · 전화 0977-84-2970'
+    ]},
+    { day: '4일차', title: '귀국 · 후쿠오카공항 국제선 17:30', lines: [
+      '15:30 공항 도착 · 라라포트에서 15:00 택시 (20~25분)'
+    ]},
+    { day: '1일차', title: '카고패스 (공항 → 호텔 캐리어 배송)', lines: [
+      '국제선 1층 도착 로비 카운터 · 7:30~14:00 · 현장 신청 가능',
+      '9호텔 하카타 배송 가능 · 체크인 때 받기'
+    ]}
+  ]}
+];
+function withInfoIds(groups) {
+  return groups.map(g => ({ id: g.id || uid(), icon: g.icon || '', title: g.title || '',
+    items: (g.items || []).map(it => ({ id: it.id || uid(), day: it.day || '', title: it.title || '', lines: Array.isArray(it.lines) ? it.lines.slice() : [] })) }));
+}
+let infoGroups = [];
+let infoEdit = false;
+const infoOpen = new Set();
+let infoFormSave = null, infoFormDel = null;
+function saveInfo() { saveJSON('info-data', infoGroups); }
+function toggleInfoEdit() {
+  infoEdit = !infoEdit;
+  const b = document.getElementById('info-edit-btn');
+  b.textContent = infoEdit ? '완료' : '편집';
+  b.classList.toggle('on', infoEdit);
+  renderInfo();
+}
+function resetInfo() {
+  if (!confirm('직접 고친 내용이 사라지고 최신 기본 내용으로 바뀌어요. 되돌릴까요?')) return;
+  infoGroups = withInfoIds(DEFAULT_INFO);
+  saveInfo();
+  renderInfo();
+}
+function openInfoForm(mode, g, it) {
+  const isItem = mode === 'item';
+  document.getElementById('info-f-item').style.display = isItem ? '' : 'none';
+  document.getElementById('info-f-group').style.display = isItem ? 'none' : '';
+  const isNew = isItem ? !it : !g;
+  document.getElementById('info-form-title').textContent = (isItem ? '항목 ' : '분류 ') + (isNew ? '추가' : '수정');
+  document.getElementById('info-f-del').style.visibility = isNew ? 'hidden' : 'visible';
+  if (isItem) {
+    document.getElementById('info-f-day').value = it ? it.day : '';
+    document.getElementById('info-f-title').value = it ? it.title : '';
+    document.getElementById('info-f-lines').value = it ? it.lines.join('\n') : '';
+    infoFormSave = () => {
+      const title = document.getElementById('info-f-title').value.trim();
+      if (!title) { toast('제목을 입력해 주세요'); return false; }
+      const o = it || { id: uid() };
+      o.day = document.getElementById('info-f-day').value.trim();
+      o.title = title;
+      o.lines = document.getElementById('info-f-lines').value.split('\n').map(l => l.trim()).filter(Boolean);
+      if (!it) g.items.push(o);
+      return true;
+    };
+    infoFormDel = () => { if (!confirm('"' + it.title + '" 항목을 삭제할까요?')) return false; g.items = g.items.filter(x => x.id !== it.id); return true; };
+  } else {
+    document.getElementById('info-f-icon').value = g ? g.icon : '📌';
+    document.getElementById('info-f-gtitle').value = g ? g.title : '';
+    infoFormSave = () => {
+      const title = document.getElementById('info-f-gtitle').value.trim();
+      if (!title) { toast('분류 이름을 입력해 주세요'); return false; }
+      const icon = document.getElementById('info-f-icon').value.trim();
+      if (g) { g.title = title; g.icon = icon; }
+      else { const ng = { id: uid(), icon, title, items: [] }; infoGroups.push(ng); infoOpen.add(ng.id); }
+      return true;
+    };
+    infoFormDel = () => {
+      if (!confirm('"' + g.title + '" 분류와 안의 항목 ' + g.items.length + '개를 모두 삭제할까요?')) return false;
+      infoGroups = infoGroups.filter(x => x.id !== g.id); return true;
+    };
+  }
+  document.getElementById('info-modal').classList.add('open');
+}
+function closeInfoForm() { document.getElementById('info-modal').classList.remove('open'); }
+document.getElementById('info-f-save').addEventListener('click', () => { if (infoFormSave && infoFormSave()) { saveInfo(); closeInfoForm(); renderInfo(); } });
+document.getElementById('info-f-del').addEventListener('click', () => { if (infoFormDel && infoFormDel()) { saveInfo(); closeInfoForm(); renderInfo(); } });
+
+function renderInfo() {
+  const wrap = document.getElementById('info-list');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  if (infoGroups.length === 0 && !infoEdit) wrap.innerHTML = '<div class="empty-msg">등록된 내용이 없어요. 편집을 눌러 추가해 주세요.</div>';
+  infoGroups.forEach(g => {
+    const d = document.createElement('details');
+    d.className = 'info-acc';
+    if (infoEdit || infoOpen.has(g.id)) d.open = true;
+    d.addEventListener('toggle', () => { d.open ? infoOpen.add(g.id) : infoOpen.delete(g.id); });
+    d.innerHTML =
+      '<summary><span class="g-ic">' + esc(g.icon) + '</span><span class="g-t">' + esc(g.title) + '</span>' +
+      '<span class="g-n">' + g.items.length + '</span><span class="g-arw"></span></summary><div class="info-body"></div>';
+    const body = d.querySelector('.info-body');
+    g.items.forEach(it => {
+      const row = document.createElement('div');
+      row.className = 'info-item';
+      row.innerHTML =
+        '<div class="ih"><div class="it">' + esc(it.title) + '</div>' +
+        (it.day ? '<div class="day">' + esc(it.day) + '</div>' : '') +
+        (infoEdit ? '<button class="info-link accent">수정</button>' : '') + '</div>' +
+        (it.lines.length ? '<div class="lines">' + it.lines.map(l => '<div>' + esc(l) + '</div>').join('') + '</div>' : '');
+      if (infoEdit) row.querySelector('.info-link').addEventListener('click', () => openInfoForm('item', g, it));
+      body.appendChild(row);
+    });
+    if (infoEdit) {
+      const foot = document.createElement('div');
+      foot.className = 'info-foot';
+      foot.innerHTML = '<button class="info-link accent" style="padding-left:0">+ 항목 추가</button><button class="info-link">분류 이름 수정</button>';
+      const [addBtn, renBtn] = foot.querySelectorAll('button');
+      addBtn.addEventListener('click', () => openInfoForm('item', g, null));
+      renBtn.addEventListener('click', () => openInfoForm('group', g));
+      body.appendChild(foot);
+    }
+    wrap.appendChild(d);
+  });
+  if (infoEdit) {
+    const bottom = document.createElement('div');
+    bottom.className = 'info-bottom';
+    bottom.innerHTML = '<button class="info-link accent" style="padding-left:0">+ 분류 추가</button><button class="info-link">기본 내용으로 되돌리기</button>';
+    const [addG, reset] = bottom.querySelectorAll('button');
+    addG.addEventListener('click', () => openInfoForm('group', null));
+    reset.addEventListener('click', resetInfo);
+    wrap.appendChild(bottom);
+  }
 }
 
 /* ---------- tabs ---------- */
@@ -1216,6 +1644,7 @@ document.querySelectorAll('.tabbtn').forEach(btn => {
   expenses = await loadJSON('expenses-list', []);
   jpPlaces = await loadJSON('jp-places', DEFAULT_JP_PLACES);
   fxRate = await loadJSON('fx-rate', 9.3);
+  infoGroups = withInfoIds(await loadJSON('info-data', DEFAULT_INFO));
   if (!(fxRate > 0)) fxRate = 9.3;
   document.getElementById('fx-rate').value = fxRate;
   renderPhrases();
