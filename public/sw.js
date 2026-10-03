@@ -1,6 +1,6 @@
 // 오프라인 대비 서비스워커: 캐시에 있으면 즉시 보여주고, 뒤에서 최신본으로 갱신(stale-while-revalidate).
 // 코드를 수정해 재배포할 때는 아래 버전 숫자를 올려주세요. (예: v1 → v2)
-const CACHE = 'fukuoka-baby-v2';
+const CACHE = 'fukuoka-baby-v3';
 const CORE = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', (event) => {
